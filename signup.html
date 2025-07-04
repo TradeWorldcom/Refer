@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade World - Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 70px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            color: var(--dark-color);
+            font-size: 1.5rem;
+        }
+
+        .auth-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .auth-section h2 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-section h2 i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-signup {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .btn-signup:hover {
+            background-color: #2980b9;
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+
+        .auth-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .auth-link a:hover {
+            text-decoration: underline;
+        }
+
+        #signup-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .error {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Trade World Logo">
+            <h1>Trade World</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="auth-section">
+            <h2><i class="fas fa-user-plus"></i> Create New Account</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name:</label>
+                    <input type="text" id="signup-name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email:</label>
+                    <input type="email" id="signup-email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signup-mobile">Mobile Number:</label>
+                    <input type="tel" id="signup-mobile" required placeholder="Enter your mobile number">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" required placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password:</label>
+                    <input type="password" id="signup-confirm-password" required placeholder="Confirm your password">
+                </div>
+                <div class="form-group">
+                    <label for="referral-id">Referral ID (Optional):</label>
+                    <input type="text" id="referral-id" placeholder="Enter referral ID if any">
+                </div>
+                <button type="submit" class="btn-signup">Create Account</button>
+                <p class="auth-link">Already have an account? <a href="login.html">Login here</a></p>
+            </form>
+            <div id="signup-result"></div>
+        </section>
+    </div>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCzHmIimieea8H9KzYFDSqD0lGOCZjxHYQ",
+            authDomain: "myapp-ee226.firebaseapp.com",
+            databaseURL: "https://myapp-ee226-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "myapp-ee226",
+            storageBucket: "myapp-ee226.appspot.com",
+            messagingSenderId: "272405753135",
+            appId: "1:272405753135:web:3a5a1e5c8e8d5f8a1a2f3f"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.database();
+
+        // Check for referral ID in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const referralId = urlParams.get('ref');
+        if (referralId) {
+            document.getElementById('referral-id').value = referralId;
+        }
+
+        // Signup form submission
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const mobile = document.getElementById('signup-mobile').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+            const referralId = document.getElementById('referral-id').value;
+            const resultDiv = document.getElementById('signup-result');
+            
+            if (password !== confirmPassword) {
+                resultDiv.textContent = 'Passwords do not match';
+                resultDiv.className = 'error';
+                return;
+            }
+            
+            resultDiv.textContent = 'Creating account...';
+            resultDiv.className = '';
+            
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(userCredential => {
+                    const userId = userCredential.user.uid;
+                    const userNumber = Math.floor(1000 + Math.random() * 9000);
+                    const userDisplayId = `TW${userNumber}`;
+                    const referralLink = `${window.location.origin}/signup.html?ref=${userDisplayId}`;
+                    
+                    const userData = {
+                        name: name,
+                        email: email,
+                        mobile: mobile,
+                        user_id: userDisplayId,
+                        balance: 0,
+                        trading_profit: 0,
+                        direct_referral_earning: 0,
+                        total_team_earning: 0,
+                        referral_link: referralLink,
+                        created_at: Date.now()
+                    };
+                    
+                    if (referralId) {
+                        userData.referred_by_user_id = referralId;
+                    }
+                    
+                    return db.ref('users/' + userId).set(userData);
+                })
+                .then(() => {
+                    window.location.href = "index.html";
+                })
+                .catch(error => {
+                    console.error("Signup error:", error);
+                    resultDiv.textContent = error.message;
+                    resultDiv.className = 'error';
+                });
+        });
+    </script>
+</body>
+</html>
