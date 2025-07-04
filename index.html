@@ -1169,5 +1169,29 @@
             document.getElementById('main-nav').classList.toggle('show');
         });
     </script>
+<script src="backendapp.js"></script>
+<script>
+  // Example usage
+  document.addEventListener('DOMContentLoaded', function() {
+    // Sign up example
+    document.getElementById('signup-btn').addEventListener('click', function() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      signUp(email, password)
+        .then((userCredential) => {
+          // Signed up successfully
+          const user = userCredential.user;
+          writeUserData(user.uid, "New User", email);
+          console.log("User created and data written");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
+    
+    // Other event listeners...
+  });
+</script>
 </body>
 </html>
