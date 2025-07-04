@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade World - Team Structure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            color: var(--dark-color);
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a.active {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        nav ul li a i {
+            margin-right: 8px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            padding: 15px 20px;
+            cursor: pointer;
+        }
+
+        .team-section h2 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .team-section h2 i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-card h4 {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .team-levels {
+            margin-top: 30px;
+        }
+
+        .level-container {
+            margin-bottom: 30px;
+        }
+
+        .level-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .members-list {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .team-member {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .member-name {
+            font-weight: 500;
+        }
+
+        .member-id {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .empty-message {
+            color: #777;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .more-members {
+            color: var(--primary-color);
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Trade World Logo">
+            <h1>Trade World</h1>
+        </div>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="my-profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="withdraw-fund.html"><i class="fas fa-money-bill-wave"></i> Withdraw</a></li>
+                <li><a href="referral-program.html"><i class="fas fa-users"></i> Referral Program</a></li>
+                <li><a href="team-structure.html" class="active"><i class="fas fa-sitemap"></i> Team Structure</a></li>
+                <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="team-section">
+            <h2><i class="fas fa-sitemap"></i> Team Structure</h2>
+            <div class="team-stats">
+                <div class="stat-card">
+                    <h4>Total Team Members</h4>
+                    <p id="total-members">0</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Active Members</h4>
+                    <p id="active-members">0</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Team Earnings</h4>
+                    <p id="team-earnings">$0.00</p>
+                </div>
+            </div>
+            
+            <div class="team-levels">
+                <div class="level-container">
+                    <h3>Level 1 - Direct Referrals</h3>
+                    <div id="level1-members" class="members-list">
+                        <!-- Level 1 members will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="level-container">
+                    <h3>Level 2</h3>
+                    <div id="level2-members" class="members-list">
+                        <!-- Level 2 members will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="level-container">
+                    <h3>Level 3</h3>
+                    <div id="level3-members" class="members-list">
+                        <!-- Level 3 members will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="level-container">
+                    <h3>Level 4</h3>
+                    <div id="level4-members" class="members-list">
+                        <!-- Level 4 members will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="level-container">
+                    <h3>Level 5</h3>
+                    <div id="level5-members" class="members-list">
+                        <!-- Level 5 members will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCzHmIimieea8H9KzYFDSqD0lGOCZjxHYQ",
+            authDomain: "myapp-ee226.firebaseapp.com",
+            databaseURL: "https://myapp-ee226-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "myapp-ee226",
+            storageBucket: "myapp-ee226.appspot.com",
+            messagingSenderId: "272405753135",
+            appId: "1:272405753135:web:3a5a1e5c8e8d5f8a1a2f3f"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.database();
+
+        // Auth state management
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                console.log("User is signed in:", user.uid);
+                
+                db.ref('users/' + user.uid).once('value').then(snapshot => {
+                    const userData = snapshot.val();
+                    if (userData && userData.user_id) {
+                        loadTeamStructure(userData.user_id);
+                    }
+                });
+            } else {
+                console.log("User is signed out");
+                window.location.href = "login.html";
+            }
+        });
+
+        // Logout functionality
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            auth.signOut().then(() => {
+                console.log("User signed out");
+                window.location.href = "login.html";
+            }).catch(error => {
+                console.error("Sign out error:", error);
+            });
+        });
+
+        // Load team structure data
+        function loadTeamStructure(userId) {
+            db.ref('users/' + userId).once('value').then(snapshot => {
+                const userData = snapshot.val();
+                if (userData) {
+                    document.getElementById('total-members').textContent = userData.total_team_members || '0';
+                    document.getElementById('active-members').textContent = userData.active_team_members || '0';
+                    document.getElementById('team-earnings').textContent = `$${userData.total_team_earning || '0.00'}`;
+                }
+            });
+            
+            simulateTeamMembers('level1-members', 5);
+            simulateTeamMembers('level2-members', 10);
+            simulateTeamMembers('level3-members', 20);
+            simulateTeamMembers('level4-members', 30);
+            simulateTeamMembers('level5-members', 50);
+        }
+
+        // Simulate team members
+        function simulateTeamMembers(containerId, count) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            if (count === 0) {
+                const emptyMsg = document.createElement('p');
+                emptyMsg.className = 'empty-message';
+                emptyMsg.textContent = 'No members at this level';
+                container.appendChild(emptyMsg);
+                return;
+            }
+            
+            for (let i = 1; i <= Math.min(count, 10); i++) {
+                const member = document.createElement('div');
+                member.className = 'team-member';
+                
+                const name = document.createElement('span');
+                name.className = 'member-name';
+                name.textContent = `Member ${i}`;
+                
+                const id = document.createElement('span');
+                id.className = 'member-id';
+                id.textContent = `ID: TW${1000 + i}`;
+                
+                member.appendChild(name);
+                member.appendChild(id);
+                container.appendChild(member);
+            }
+            
+            if (count > 10) {
+                const moreMsg = document.createElement('p');
+                moreMsg.className = 'more-members';
+                moreMsg.textContent = `+${count - 10} more members...`;
+                container.appendChild(moreMsg);
+            }
+        }
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('main-nav').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
